@@ -1,0 +1,28 @@
+
+
+
+
+.post img{
+    width:200px;
+    height: auto;
+    aspect-ratio: 1/1;
+}
+.images{
+    display: flex;
+    
+    flex-wrap: wrap;
+}
+
+.posts{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+footer {
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+  }

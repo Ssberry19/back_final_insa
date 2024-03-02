@@ -1,0 +1,66 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;  /* Example font choice */
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+h1 {
+    text-align: center;
+    margin: 30px 0;
+}
+
+form {
+    width: 500px;  /* Adjust form width as needed */
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Input fields, labels, select */
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%;  
+    padding: 12px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+button[type="submit"] {
+    background-color: #4CAF50; /* Example color - change as desired */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049; /* Slightly darker shade on hover */
+  }
+
+  footer {
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+  }
+
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">    <link rel="stylesheet" href="/public/home.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Your Website</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h3>Welcome, <%= user.username %>!</h3>
+        <p>Glad to see you back. Explore what's new today!</p>
+
+        <main>
+            <div class="row">
+                <% if (posts) { %>
+                    <% posts.forEach(post => { %>
+                        <div class="col-md-6">
+                            <%- include('./portfolio/list.ejs', { post: post, user: user }) %>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div>
+            <h6>© 2024 <a href="https://github.com/gybratyy" target="_blank">
+                    <i class="fa-brands fa-github"></i> </a></h6>
+    
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kmF8HsZCy6oBySkI7JvxF+uSKT9KIOT+IBr2OOpr772FoFiWTZP6jNkPZDViIS6P" crossorigin="anonymous"></script>
+</body>
+
+</html>

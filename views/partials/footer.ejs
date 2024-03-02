@@ -1,0 +1,27 @@
+
+<script>
+    const addPostButton = document.getElementById('add-post-button');
+    const formContainer = document.getElementById('create-post-form-container');
+    const cancelButton = document.getElementById('cancel-form');
+
+    function showaddForm() {
+        formContainer.style.display = 'block';
+    }
+
+    cancelButton.addEventListener('click', () => {
+        formContainer.style.display = 'none';
+    });
+
+
+    const editFormContainer   = document.getElementById('edit-form');
+    const cancelEditButton = document.getElementById('cancel-edit-form');
+
+    function showEditForm() {
+        editFormContainer.style.display = 'block';
+    }
+
+    cancelEditButton.addEventListener('click', () => {
+        editFormContainer.style.display = 'none';
+    });
+
+</script>

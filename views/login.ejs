@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/2b40017a14.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">    <link rel="stylesheet" href="/public/home.css">
+    <link rel="stylesheet" href="/public/login.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Your Website</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h3>Welcome</h3>
+    
+<div id="form-holder" >
+    
+    <form action="/login" method="POST" >
+        
+            <label for="email" class="mb-1">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+        
+        
+            <label for="password" class="mb-1">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+        
+        <button type="submit" >Login</button>
+    </form>
+    <a href="/register">Don't have an account? Register</a>
+</div>
+
+
+</body>
+<footer>
+    <div>
+        <h6>© 2024 <a href="https://github.com/gybratyy" target="_blank">
+                <i class="fa-brands fa-github"></i> </a></h6>
+
+    </div>
+</footer>
+</html>
