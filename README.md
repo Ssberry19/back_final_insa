@@ -8,28 +8,36 @@ To get started with this project, follow these steps:
 Node.js installed on your machine
 MongoDB installed and running locally or accessible via a cloud service
 npm or yarn package manager
-Installation
-Clone this repository to your local machine using:
+
+## Installation
+
+**Clone this repository to your local machine using:**
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
-Navigate into the project directory:
+git clone https://github.com/Ssberry19/back_final_insa/
+
 ```
+**Navigate into the project directory:**
 
 ```bash
 cd your-repository
-Install the project dependencies:
-```
 
+```
+**Install the project dependencies:**
+
+```bash
+npm install
+```
 
 ### Configuration
 Create a .env file in the root directory of the project based on the .env.example file.
 Update the environment variables in the .env file as needed, such as database connection details, session keys, and email credentials.
-Running the Application
-Start the server:
+
+### Running the Application
+**Start the server:**
 
 ```bash
-npm install
+npm start
 ```
 This will start the server on the default port (or the port specified in the .env file).
 
