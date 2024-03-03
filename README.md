@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 # My Node.js Backend Project
-=======
-
-# Final Backend Project
->>>>>>> 021a3a3b4a3b71f57924e0d94c6f41005bc36bf9
 This is a backend project built with Node.js, Express.js, and MongoDB.
 
 ## Getting Started
