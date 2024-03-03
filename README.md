@@ -17,12 +17,7 @@ npm or yarn package manager
 git clone https://github.com/Ssberry19/back_final_insa/
 
 ```
-
-**Install the project dependencies:**
-
-```bash
-npm install
-```
+Install the project dependencies
 
 ### Configuration
 Create a .env file in the root directory of the project based on the .env.example file.
