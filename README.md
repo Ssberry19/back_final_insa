@@ -17,12 +17,7 @@ npm or yarn package manager
 git clone https://github.com/Ssberry19/back_final_insa/
 
 ```
-**Navigate into the project directory:**
 
-```bash
-cd your-repository
-
-```
 **Install the project dependencies:**
 
 ```bash
@@ -31,7 +26,21 @@ npm install
 
 ### Configuration
 Create a .env file in the root directory of the project based on the .env.example file.
-Update the environment variables in the .env file as needed, such as database connection details, session keys, and email credentials.
+**Update the environment variables in the .env file**, such as database connection details, session keys, and email credentials:
+```bash
+JWT_SECRET=verysaveextralongsecret
+JWT_EXPIRES_IN=3600
+
+PORT=3000
+SESSION_KEY=verysafeexpresssessionsecretkey
+DATABASE=mongodb+srv://gybraty:<PASSWORD>@portfolio.wurtkio.mongodb.net/
+DATABASE_PASSWORD=portfoliopassword
+
+DEV_EMAIL=insaniyatka@gmail.com
+DEV_EMAIL_PASSWORD=ihih fijx nskv egkz
+
+NEWS_API_KEY=1272bac39c63404ab8dd1c8ddeb62cf4
+```
 
 ### Running the Application
 **Start the server:**
