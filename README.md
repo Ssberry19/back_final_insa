@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 # My Node.js Backend Project
+=======
+
+# Final Backend Project
+>>>>>>> 021a3a3b4a3b71f57924e0d94c6f41005bc36bf9
 This is a backend project built with Node.js, Express.js, and MongoDB.
 
 ## Getting Started
@@ -49,18 +54,25 @@ This will start the server on the default port (or the port specified in the .en
 
 ### Usage
 <<<<<<< HEAD
+<<<<<<< HEAD
 Register a new user by accessing /register route and filling out the registration form.
 Login with your registered credentials at /login route.
 Once logged in, you can access the home page at /home where you can view portfolio items.
 Users with admin role can access the admin dashboard at /dashboard to add, edit, or delete portfolio items.
 Logout by accessing /logout route.
 =======
+=======
+>>>>>>> 021a3a3b4a3b71f57924e0d94c6f41005bc36bf9
 - Register a new user by accessing /register route and filling out the registration form.
 - Login with your registered credentials at /login route.
 - Once logged in, you can access the home page at /home where you can view portfolio items.
 - Users with admin role can access the admin dashboard at /dashboard to add, edit, or delete portfolio items.
 - Logout by accessing /logout route.
+<<<<<<< HEAD
 >>>>>>> 6b187610fde2541d189d6a6af65a0c96318be8b8
+=======
+
+>>>>>>> 021a3a3b4a3b71f57924e0d94c6f41005bc36bf9
 
 ### Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue if you encounter any bugs or have suggestions for improvements.
