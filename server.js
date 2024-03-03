@@ -33,15 +33,6 @@ function isLoggedIn(req, res, next) {
 
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
 
-async function fetchNewsData() {
-    try {
-        const response = await axios.get(process.env.NEWS_API_URL);
-        return response.data.articles;
-    } catch (error) {
-        console.error('Error fetching news data:', error);
-        return [];
-    }
-}
 
 if (!NEWS_API_KEY) {
     console.error('Please provide your News API key in the .env file.');
@@ -50,34 +41,18 @@ if (!NEWS_API_KEY) {
 
 const newsApiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}`;
 
-async function fetchNews() {
+async function fetchNews(req, res) {
     try {
         const response = await axios.get(newsApiUrl);
-        return response.data.articles;
+        res.status(200).send({
+            articles: response.data.articles
+        })
     } catch (error) {
-        console.error('Error fetching news:', error.response.data);
-        return [];
+        console.error('Error fetching news:', error);
+        res.send(error);
     }
 }
 
-
-async function displayNews() {
-    const articles = await fetchNews();
-    if (articles.length === 0) {
-        console.log('No articles found.');
-        return;
-    }
-
-    console.log('Latest news headlines:');
-    articles.forEach((article, index) => {
-        console.log(`${index + 1}. ${article.title}`);
-        console.log(`   ${article.description}`);
-        console.log(`   ${article.url}`);
-        console.log();
-    });
-}
-
-displayNews();
 
 const DB = process.env.DATABASE;
 
@@ -108,10 +83,15 @@ app.get('/logout', (req, res) => {
     });
 });
 
+app.get('/news', fetchNews);
+
 // Serve home
-app.get('/home', isLoggedIn, Controller.getAllPortfolioItems, (req, res) => {
-    res.render('home', { user: req.session.user, posts: res.locals.data.portfolioItems });
+app.get('/home', isLoggedIn, Controller.getAllPortfolioItems, async (req, res) => {
+    const newsRequest =  await axios.get("http://localhost:3000/news"); 
+
+    res.render('home', { user: req.session.user, posts: res.locals.data.portfolioItems, articles: newsRequest.data.articles});
 });
+
 
 app.get('/dashboard', isLoggedIn, Controller.getAllPortfolioItems, (req, res) => {
     res.render('dashboard', { user: req.session.user , posts: res.locals.data.portfolioItems});

@@ -52,9 +52,13 @@
         </main>
 
         <section class="news-section">
-            <h2>Latest News</h2>
-            <div class="news-container">
-                <!-- News items will be dynamically added here -->
+            <h1 id = "kek">Latest News</h1>
+            <div class="news-container" style="font-size: 0.5rem !important;">
+                <% articles.forEach(article => { %>
+                    <div class="col-md-6" style="font-size: 0.5 irem;">
+                        <h1><%= article.title %></h1>
+                    </div>
+                <% }) %>
             </div>
         </section>
     </div>
@@ -76,29 +80,29 @@
         return;
     }
 
-    $.ajax({
-        url: '<%= process.env.NEWS_API_URL %>',
-        method: 'GET',
-        success: function (data) {
-            console.log('News API response:', data);
-            var articles = data.articles;
-            var newsContainer = $('.news-container');
+    // $.ajax({
+    //     url: '<%= process.env.NEWS_API_URL %>',
+    //     method: 'GET',
+    //     success: function (data) {
+    //         console.log('News API response:', data);
+    //         var articles = data.articles;
+    //         var newsContainer = $('.news-container');
 
-            articles.forEach(function (article) {
-                var newsItem = $('<div class="news-item"></div>');
-                var title = $('<h3>' + article.title + '</h3>');
-                var description = $('<p>' + article.description + '</p>');
-                var source = $('<p>Source: ' + article.source.name + '</p>');
+    //         articles.forEach(function (article) {
+    //             var newsItem = $('<div class="news-item"></div>');
+    //             var title = $('<h3>' + article.title + '</h3>');
+    //             var description = $('<p>' + article.description + '</p>');
+    //             var source = $('<p>Source: ' + article.source.name + '</p>');
 
-                newsItem.append(title, description, source);
-                newsContainer.append(newsItem);
-            });
-        },
-        error: function (xhr, status, error) {
-            console.error('Error fetching news:', error);
-            $('.news-section').html('<p>Error fetching news. Please try again later.</p>');
-        }
-    });
+    //             newsItem.append(title, description, source);
+    //             newsContainer.append(newsItem);
+    //         });
+    //     },
+    //     error: function (xhr, status, error) {
+    //         console.error('Error fetching news:', error);
+    //         $('.news-section').html('<p>Error fetching news. Please try again later.</p>');
+    //     }
+    // });
 });
 
     </script>
