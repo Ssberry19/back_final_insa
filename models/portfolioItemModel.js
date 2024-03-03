@@ -24,8 +24,8 @@ const portfolioItemSchema = new mongoose.Schema({
         type: Date,
         default: new Date()
     }
-
-
+}, {
+    timestamps: true // This option adds createdAt and updatedAt fields
 });
 
 const PortfolioItem = mongoose.model('PortfolioItem', portfolioItemSchema);

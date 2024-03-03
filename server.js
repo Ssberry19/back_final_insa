@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const axios = require('axios');
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const Controller = require('./controllers/controller');
@@ -29,6 +31,53 @@ function isLoggedIn(req, res, next) {
     next();
 }
 
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
+
+async function fetchNewsData() {
+    try {
+        const response = await axios.get(process.env.NEWS_API_URL);
+        return response.data.articles;
+    } catch (error) {
+        console.error('Error fetching news data:', error);
+        return [];
+    }
+}
+
+if (!NEWS_API_KEY) {
+    console.error('Please provide your News API key in the .env file.');
+    process.exit(1);
+}
+
+const newsApiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}`;
+
+async function fetchNews() {
+    try {
+        const response = await axios.get(newsApiUrl);
+        return response.data.articles;
+    } catch (error) {
+        console.error('Error fetching news:', error.response.data);
+        return [];
+    }
+}
+
+
+async function displayNews() {
+    const articles = await fetchNews();
+    if (articles.length === 0) {
+        console.log('No articles found.');
+        return;
+    }
+
+    console.log('Latest news headlines:');
+    articles.forEach((article, index) => {
+        console.log(`${index + 1}. ${article.title}`);
+        console.log(`   ${article.description}`);
+        console.log(`   ${article.url}`);
+        console.log();
+    });
+}
+
+displayNews();
 
 const DB = process.env.DATABASE;
 
@@ -38,8 +87,6 @@ mongoose
         useUnifiedTopology: true
     })
     .then(() => console.log('DB connection successful!'));
-
-
 
 // Serve registration form
 app.get('/register', (req, res) => res.render('register'));

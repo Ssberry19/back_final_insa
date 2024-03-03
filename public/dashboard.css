@@ -1,70 +1,197 @@
-
-nav a:hover{
-    color: #968d8d;
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    font-family: Garamond, sans-serif;
+}
+
+/* Navbar styles */
+header {
+    background-color: #391f1f !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #333366;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    
+}
+
+.navbar{
+    background-color:  #638889;
+}
+
+.nav-item {
+    margin-left: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333366;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #663366;
+}
+
+/* Footer styles */
 footer {
     text-align: center;
-    background-color: #f8f8f8;
-    padding: 10px;
+    background-color:  #638889;
+    color:  #F9EFDB;
+    padding: 20px;
     bottom: 0;
     width: 100%;
-  }
+}
 
+footer h6 {
+    margin-bottom: 10px;
+}
 
-#create-post-form-container{
+.fa-github {
+    color: #333366;
+    transition: color 0.3s ease;
+}
+
+.fa-github:hover {
+    color: #663366;
+}
+
+/* Additional styles */
+nav a:hover {
+    color: #968d8d;
+}
+
+#lol{
+
+    margin: auto;
+}
+
+#create-post-form-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
-  }
- 
+    padding: 20px;
+    border-radius: 5px;
+}
 
-form{
+form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 300px;
-  }
+}
 
-
-
-  .posts{
+.posts {
     display: flex;
     flex-direction: column;
+    box-shadow: 0 2px 5px rgba(57, 54, 54, 0.2);
+    border: 1px solid #ddd;
+}
 
-  }
-  .post{
+.post {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
     justify-content: space-evenly;
-  }
-  .post-info{
-    margin: 20px 0;
+    background-color: #FFF5EE;
     padding: 20px;
-    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.post-info {
+    margin: 20px;
+    padding: 40px;
+    width: 450px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 450px;
-  }
-  .post-info img{
-    width:200px;
+    border: 4px solid #ddd;
+    text-align: center;
+}
+
+.post-info img {
+    width: 200px;
     height: auto;
     aspect-ratio: 1/1;
     margin-bottom: 50px;
 }
-.images{
+
+.images {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-#edit-form{
+#edit-form {
     width: 400px;
+    height: fit-content;
+    margin: 20px 0;
+    margin-left: 20px;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 4px solid #ddd;
+    justify-content: center;
 }
-#edit-form input{
+
+#edit-form input {
     margin-bottom: 20px;
     height: 40px;
+    text-align: center;
+    background-color:  #F8F6F4;
+
+}
+
+#content {
+  width: 400px;
+  height: fit-content;
+  margin: auto;
+  padding: 20px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  background-image: url(https://priroda.club/uploads/posts/2022-08/1660035183_1-priroda-club-p-priroda-v-pastelnikh-tonakh-krasivo-foto-1.jpg);
+  color: #663366;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+    background-color: #638889;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    background-color: #D0E7D2;
 }

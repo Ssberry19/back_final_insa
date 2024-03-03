@@ -10,9 +10,6 @@ const path = require('path');
 
 const fs = require('fs');
 
-
-
-
 exports.register = catchAsync(async (req, res, next) => {
     // Check if username or email already exists
     const existingUser = await User.findOne({ $or: [{ username: req.body.username }, { email: req.body.email }] });

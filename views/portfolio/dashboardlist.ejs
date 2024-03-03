@@ -1,36 +1,51 @@
-
 <div class="post">
     <div class="post-info">
-   <h4><%= post.titleenglish %></h4>
-<h4><%= post.titlerussian %></h4>
-<p><%= post.descriptionenglish %></p>
-<p><%= post.descriptionrussian %></p>
-<p><%= post.date %></p>
-<div class="images"><% post.images.forEach(photo =>{ %>
-    <img src="..<%= photo%>" alt="<%= photo%>">
-<%})%></div>
-
-<form action="/delete" method="POST">
-    <input type="hidden" name="id" value="<%= post._id %>">
-    <button type="submit">Delete</button>
-</form>
-<button id="open-edit-button" onclick="showEditForm()">Edit</button>
-</div>
-<div id="edit-form" >
-    <form action="/edit" method="POST" enctype="multipart/form-data" >
-        <input type="hidden" name="editid" value="<%= post._id %>">
-        <label for="titleenglish">Title in English</label>
-        <input type="text" name="titleenglish" value="<%= post.titleenglish %>">
-        <label for="titlerussian">Title in Russian</label>
-        <input type="text" name="titlerussian" value="<%= post.titlerussian %>">
-        <label for="descriptionenglish">Description in English</label>
-        <input type="text" name="descriptionenglish" value="<%= post.descriptionenglish %>">
-        <label for="descriptionrussian">Description in Russian</label>
-        <input type="text" name="descriptionrussian" value="<%= post.descriptionrussian %>">
-        <input type="file" name="editimages" id="editimages" multiple accept="image/*" >
-        <button type="submit">Submit edition</button>
-        <button type="button" id="cancel-edit-form">Cancel</button>
-    </form>
-</div> 
-
+        <h2><strong><%= post.titleenglish %> - <%= post.titlerussian %></strong></h2>
+        <p><%= post.descriptionenglish %> - <%= post.descriptionrussian %></p>       
+        <div id="carousel" <%= post._id %>" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <% post.images.forEach((photo, index) => { %>
+                    <li data-target="#carousel<%= post._id %>" data-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+                <% }) %>
+            </ol>
+            <div class="carousel-inner">
+                <% post.images.forEach((photo, index) => { %>
+                    <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                        <img src="..<%= photo %>" class="d-block w-100" alt="<%= photo %>">
+                    </div>
+                <% }) %>
+            </div>
+            <a class="carousel-control-prev" href="#carousel<%= post._id %>" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel<%= post._id %>" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+       
+        <form action="/delete" method="POST" id = "lol">
+            <input type="hidden" name="id" value="<%= post._id %>">
+            <button type="submit">Delete</button>
+        </form>
+        <p>Created At: <%= post.createdAt %></p>
+        <p>Updated At: <%= post.updatedAt %></p>
+    </div>
+    <div id="edit-form">
+        <form action="/edit" method="POST" enctype="multipart/form-data">
+            <h2>Edit Existing Post</h2>
+            <input type="hidden" name="editid" value="<%= post._id %>">
+            <label for="titleenglish">Title in English</label>
+            <input type="text" name="titleenglish" value="<%= post.titleenglish %>">
+            <label for="titlerussian">Title in Russian</label>
+            <input type="text" name="titlerussian" value="<%= post.titlerussian %>">
+            <label for="descriptionenglish">Description in English</label>
+            <input type="text" name="descriptionenglish" value="<%= post.descriptionenglish %>">
+            <label for="descriptionrussian">Description in Russian</label>
+            <input type="text" name="descriptionrussian" value="<%= post.descriptionrussian %>">
+            <input type="file" name="editimages" id="editimages" multiple accept="image/*" style="background-color: #FFF5EE !important;">
+            <button type="submit">Submit edition</button>
+        </form>
+    </div>
 </div>

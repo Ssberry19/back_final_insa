@@ -1,13 +1,31 @@
-
-<div class="post" ><% if (user.language === 'english') { %>
-    <h4><%= post.titleenglish %></h4>
-    <p><%= post.descriptionenglish %></p>
-<% } else if (user.language === 'russian') { %>
-    <h2><%= post.titlerussian %></h2>
-    <p><%= post.descriptionrussian %></p>
-<% } %>
-    <div class="images" >
-<% post.images.forEach(photo =>{ %>
-    <img src="..<%= photo%>" alt="<%= photo%>">
-<%})%></div>
+<div class="post">
+    <% if (user.language === 'english') { %>
+        <h4><%= post.titleenglish %></h4>
+        <p><%= post.descriptionenglish %></p>
+    <% } else if (user.language === 'russian') { %>
+        <h2><%= post.titlerussian %></h2>
+        <p><%= post.descriptionrussian %></p>
+    <% } %>
+    <div id="carousel<%= post._id %>" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <% post.images.forEach((photo, index) => { %>
+                <li data-target="#carousel<%= post._id %>" data-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+            <% }) %>
+        </ol>
+        <div class="carousel-inner">
+            <% post.images.forEach((photo, index) => { %>
+                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                    <img src="..<%= photo %>" class="d-block w-100" alt="<%= photo %>">
+                </div>
+            <% }) %>
+        </div>
+        <a class="carousel-control-prev" href="#carousel<%= post._id %>" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel<%= post._id %>" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 </div>

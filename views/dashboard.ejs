@@ -6,72 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://kit.fontawesome.com/2b40017a14.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">    <link rel="stylesheet" href="/public/home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/home.css">
     <link rel="stylesheet" href="/public/dashboard.css">
 </head>
 
 <body>
-<main>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Your Website</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
-                </ul>
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Your Website</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" id="toggleButton" style="color: #D0E7D2; box-shadow: 0 2px 5px rgba(57, 54, 54, 0.2);
+                            border: 1px solid #ddd;">Create a post</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    
-    <div id="create-post-form-container" >
-        <form action="/newpost" method="POST" enctype="multipart/form-data">
-            <h2>Create New Post</h2>
-            
+        </nav>
 
-                <label for="titleenglish">Title (English):</label> 
-                <input type="text" id="titleenglish" name="titleenglish" required >
+    <div id="content" style="display: none; justify-content: center;">
+        <div id="create-post-form-container">
+            <form action="/newpost" method="POST" enctype="multipart/form-data">
+                <h2>Create New Post</h2>
+
+                <label for="titleenglish">Title (English):</label>
+                <input type="text" id="titleenglish" name="titleenglish" required>
                 <label for="titlerussian">Title (Russian):</label>
-                <input type="text" id="titlerussian" name="titlerussian" required> 
+                <input type="text" id="titlerussian" name="titlerussian" required>
                 <label for="descriptionenglish">Description (English):</label>
-                <textarea id="descriptionenglish" name="descriptionenglish" required></textarea> 
+                <textarea id="descriptionenglish" name="descriptionenglish" required></textarea>
                 <label for="descriptionrussian">Description (Russian):</label>
-                <textarea id="descriptionrussian" name="descriptionrussian" required></textarea> 
+                <textarea id="descriptionrussian" name="descriptionrussian" required></textarea>
                 <label for="images">Images:</label>
-                <input type="file" id="images" name="images" multiple accept="image/*"  required class="mb-3">
-           
-            <button type="submit">Create Post</button>
-            
-        </form>
+                <input type="file" id="images" name="images" multiple accept="image/*" required class="mb-3">
+
+                <button type="submit">Create Post</button>
+
+            </form>
+        </div>
     </div>
 
-    <div class="posts"><% if (posts) { %>
-        <% posts.forEach(post => { %>
+        <div class="posts">
+           
+            <% if (posts) { %>
+            <% posts.forEach(post => { %>
             <%- include('./portfolio/dashboardlist.ejs', { post: post})%>
 
-        <% }) %>
-    <% } %></div>
-    
+            <% }) %>
+            <% } %>
+        </div>
+        <script>
+            document.getElementById("toggleButton").addEventListener("click", function() {
+                var contentDiv = document.getElementById("content");
+                if (contentDiv.style.display === "none") {
+                    contentDiv.style.display = "block";
+                } else {
+                    contentDiv.style.display = "none";
+                }
+            });
+        </script>
+    </main>
 
-</main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 <footer>
     <div>
-        <h6>© 2024 <a href="https://github.com/gybratyy" target="_blank">
+        <h6>© 2024 Insaniyat Tungushpayeva IT-2207<a href="https://github.com/Ssberry19" target="_blank">
                 <i class="fa-brands fa-github"></i> </a></h6>
 
     </div>
 </footer>
 
-
-</body>
-
 </html>
-

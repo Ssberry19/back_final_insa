@@ -5,15 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">    <link rel="stylesheet" href="/public/home.css">
+    <script src="https://kit.fontawesome.com/2b40017a14.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/home.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Your Website</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -23,6 +26,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Admin panel</a>
                     </li>
                 </ul>
             </div>
@@ -44,16 +50,58 @@
                 <% } %>
             </div>
         </main>
+
+        <section class="news-section">
+            <h2>Latest News</h2>
+            <div class="news-container">
+                <!-- News items will be dynamically added here -->
+            </div>
+        </section>
     </div>
 
-    <footer>
+    <footer class="fixed-bottom">
         <div>
-            <h6>© 2024 <a href="https://github.com/gybratyy" target="_blank">
-                    <i class="fa-brands fa-github"></i> </a></h6>
-    
+            <h6>© 2024 Insaniyat Tungushpayeva<a href="https://github.com/Ssberry19" target="_blank">
+                    <i class="fab fa-github"></i> </a></h6>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kmF8HsZCy6oBySkI7JvxF+uSKT9KIOT+IBr2OOpr772FoFiWTZP6jNkPZDViIS6P" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+       $(document).ready(function () {
+    if (!process.env.NEWS_API_URL) {
+        console.error('News API URL is not defined.');
+        return;
+    }
+
+    $.ajax({
+        url: '<%= process.env.NEWS_API_URL %>',
+        method: 'GET',
+        success: function (data) {
+            console.log('News API response:', data);
+            var articles = data.articles;
+            var newsContainer = $('.news-container');
+
+            articles.forEach(function (article) {
+                var newsItem = $('<div class="news-item"></div>');
+                var title = $('<h3>' + article.title + '</h3>');
+                var description = $('<p>' + article.description + '</p>');
+                var source = $('<p>Source: ' + article.source.name + '</p>');
+
+                newsItem.append(title, description, source);
+                newsContainer.append(newsItem);
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching news:', error);
+            $('.news-section').html('<p>Error fetching news. Please try again later.</p>');
+        }
+    });
+});
+
+    </script>
 </body>
 
 </html>
